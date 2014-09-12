@@ -1,0 +1,46 @@
+Minimum Requirements (to get passing grade)   //target this. :)
+- Database of scheduled facebook posts 
+- CRUD UIs scheduled/planned posts
+- System to send scheduled post from the server (Appengine) to facebook
+- Repo hosted in github to see project's progress history
+
+Phase 1 (Post facebook mesage from the client side)
+1. Host new project fb-post-planner-1.appspot.com
+2. Simple UI to get facebook status to post
+3. Create new fb app.
+4. fb log-in to get fb access_token from your page
+5. use fb api (me/feed) to post entered status to fb.
+
+
+
+Phase 2 (Post facebook mesage from the server side)
+1. Add post hadler in your server to accept (message, fb_id, access_token) from client side
+2. use fb api (me/feed) with this data (message, fb_id, access_token) from server side
+
+
+
+Phase 3 (Databe of schedules  fb post)
+1. create post model (message, fb_id, access_token) in appengine
+2. CRUD UIs for schedules post
+3. Convert short-lived tokens to long-lived tokens
+
+
+
+Phase 4 (System to send scheduled post from the server to fb)
+1. Setup CRON
+2. Checked due post to send
+3. Use fb api (me/feed) to post secheduled status to fb
+
+
+
+
+
+Resources:
+https://developers.facebook.com/
+https://developers.facebook.com/docs/
+
+Deadline: October 11, 2014
+
+arcitecture- overview, kung pno gagana yung app
+client - 1 , server -fb
+server using api will be the one posting to facebook
