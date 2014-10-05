@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fb Post Planner</title>
+    <link href="/try/bootstrap.min.css" rel="stylesheet">
+    <link href="/try/grayscale.css" rel="stylesheet">    
+</head>
+
+    <!-- About Section -->
+    <section class="container" id="list">    
+    <div class="postlist">
+    <br><br><br><br><br><br>
+    	<div><font face="Maiandra GD" color="black" size="4">SCHEDULED POSTS:</font></div>
+    	<br>
+    	{% for post in posts %}
+    	
+       		<div class="panel panel-info">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">{{post.date_to_post}}
+			    	<a class="badge pull-right" href="/delete/{{post.key.id()}}"><font face="Maiandra GD">Delete</font></a>
+			    	<a class="badge pull-right" href="/edit/{{post.key.id()}}"><font face="Maiandra GD">Edit</font></a>
+			    </h3>
+			    
+			  </div>
+			  <div class="panel-body">
+			    <font face="Maiandra GD" color="black">{{post.message}}</font>
+			  </div>
+			</div>
+    	{% else %}
+    	
+    	<div><font face="Tahoma" color="black" size="3">No Posts to Show.</font></div>
+       	 {% endfor %}
+</div>
+<hr color ="black"><hr>
+ <div class="postlist">    
+ <br>
+    	<div><font face="Maiandra GD" color="black" size="4">POSTED STATUS:</font></div>
+    	<br>
+      {% for post in posted %}
+      
+          <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{post.date_to_post}}
+            <a class="badge pull-right" href="/delete/{{post.key.id()}}"><font face="Maiandra GD">Delete</font></a>
+          </h3>
+          
+        </div>
+        <div class="panel-body">
+          <font face="Maiandra GD" color="black">{{post.message}}</font>
+        </div>
+      </div>
+      {% else %}
+      
+      <div><font face="Tahoma" color="black" size="3">No Posts to Show.</font></div>
+         {% endfor %}
+
+    </div>
+</section>
+
+    </footer>
+    <script src="/try/jquery-1.11.0.js"></script>
+    <script src="/try/bootstrap.min.js"></script>
+    <script src="/try/jquery.easing.min.js"></script>
+    <script src="/try/grayscale.js"></script>
+    <script src="/try/app.js"></script>
+</body>
+
+</html>

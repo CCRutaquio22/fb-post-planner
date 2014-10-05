@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Fb Post Planner</title>
+    <link href="/try/bootstrap.min.css" rel="stylesheet">
+    <link href="/try/grayscale.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/try/bootstrap-datetimepicker.min.css">   
+
+    <link rel="stylesheet" type="text/css" href="/try/font-awesome.min.css">
+
+    <script src="/try/vendors/jquery.js"></script>
+    <script src="/try/vendors/bootstrap.min.js"></script>
+    <script src="/try/app.js"></script>
+    <script src="/try/bootstrap-datetimepicker.min.js"></script> 
+
+</head>
+
+    <!-- About Section -->
+    <section class="container">
+    <br><br><br><br><br><br>
+
+
+<form class="form-horizontal" role="form" method="post" action="/edit/{{post.key.id()}}">
+
+  <div class="form-group">
+
+    <font face="Tahoma" size="5">Recent Status:</font><br><br>
+    <div><textarea name="message" class="form-control" rows="4" required placeholder="{{post.message}}"></textarea></div>
+
+ </div>
+
+
+  <div class="form-group">
+    <font face="Tahoma" size="4">Date-Time to Post:</font><br><br>
+          <div class='input-group date' id='datetimepicker'>
+              <input type='text' class="form-control" name="date_to_post" value="{{date}}"/>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" required></span>
+              </span>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-offset-1 col-sm-10">
+      <center><button type="submit" class="btn btn-danger btn-large">Submit</button></center>
+    </div>
+</form>
+
+</div>
+    <script src="/try/jquery-1.11.0.js"></script>
+    <script src="/try/bootstrap.min.js"></script>
+    <script src="/try/jquery.easing.min.js"></script>
+    <script src="/try/grayscale.js"></script>
+    <script src="/try/app.js"></script>
+    <script src="/try/bootstrap-datetimepicker.min.js"></script>
+</body>
+
+</html>
