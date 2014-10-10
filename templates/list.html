@@ -10,13 +10,13 @@
     <section class="container" id="list">    
     <div class="postlist">
     <br><br><br><br><br><br>
-    	<div><font face="Maiandra GD" color="black" size="4">SCHEDULED POSTS:</font></div>
+    	<div><font face="Maiandra GD" color="black" size="4"><strong>SCHEDULED POSTS:</strong></font></div>
     	<br>
     	{% for post in posts %}
     	
        		<div class="panel panel-info">
 			  <div class="panel-heading">
-			    <h3 class="panel-title">{{post.date_to_post}}
+			    <h3 class="panel-title"><font face="Maiandra GD" color="white">{{post.date_to_post}}</font>
 			    	<a class="badge pull-right" href="/delete/{{post.key.id()}}"><font face="Maiandra GD">Delete</font></a>
 			    	<a class="badge pull-right" href="/edit/{{post.key.id()}}"><font face="Maiandra GD">Edit</font></a>
 			    </h3>
@@ -34,13 +34,13 @@
 <hr color ="black"><hr>
  <div class="postlist">    
  <br>
-    	<div><font face="Maiandra GD" color="black" size="4">POSTED STATUS:</font></div>
+    	<div><font face="Maiandra GD" color="black" size="4"><strong>POSTED STATUS:</strong></font></div>
     	<br>
       {% for post in posted %}
       
           <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title">{{post.date_to_post}}
+          <h3 class="panel-title"><font face="Maiandra GD" color="white">{{post.date_to_post}}</font>
             <a class="badge pull-right" href="/delete/{{post.key.id()}}"><font face="Maiandra GD">Delete</font></a>
           </h3>
           
