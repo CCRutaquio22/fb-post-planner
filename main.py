@@ -81,7 +81,7 @@ def write_template(self,template,template_values=None):
     else:
         self.response.write(header.render()+template.render())
 
-class MainHandler(webapp2.RequestHandler):
+class MainPage(webapp2.RequestHandler):
     def get(self):
         write_template(self,"main.html")
     def post(self):
@@ -96,7 +96,7 @@ class MainHandler(webapp2.RequestHandler):
         post.put()
         self.response.write('<script>alert("New Post Scheduled.");window.location.assign("/list/'+post.user_id+'")</script>')
 
-class ListPostHandler(webapp2.RequestHandler):
+class PostList(webapp2.RequestHandler):
     def get(self,id):
         to_be_post = ndb.gql("Select * from Posts "+
             "Where user_id = :1 and status = 'TBP' ",id).bind()
@@ -109,7 +109,7 @@ class ListPostHandler(webapp2.RequestHandler):
         write_template(self,"list.html",template_values)
         
 
-class PostToFBHandler(webapp2.RequestHandler):
+class PostToFB(webapp2.RequestHandler):
     def post(self):
         data = {
                     "method": "post",
@@ -125,11 +125,12 @@ class PostToFBHandler(webapp2.RequestHandler):
         if(content.get("id")):
            self.response.write('<script>alert("New Status Successfully Posted.");window.location.assign("/")</script>')
         elif content["error"]["error_user_title"]:
-            self.response.write('<script>alert("'+content["error"]["error_user_title"]+'");window.location.assign("/")</script>')
+           self.response.write('<script>alert("Error.");window.location.assign("/")</script>')
+           # self.response.write('<script>alert("'+content["error"]["error_user_title"]+'");window.location.assign("/")</script>')
         else:
             self.response.write('<script>alert("Error Encountered.");window.location.assign("/")</script>')
 
-class EditPostHandler(webapp2.RequestHandler):
+class EditPost(webapp2.RequestHandler):
     def get(self,id):
         post = Posts.get_by_id(long(id))
         date = post.date_to_post.strftime("%m/%d/%Y %I:%M %p")
@@ -145,7 +146,7 @@ class EditPostHandler(webapp2.RequestHandler):
         post.put()
         self.response.write("<script> alert('Successfully Edited.');window.location.assign('/list/"+post.user_id+"')</script>")
 
-class DeleteHandler(webapp2.RequestHandler):
+class DeletePost(webapp2.RequestHandler):
     def get(self,id):
         post = Posts.get_by_id(long(id))
         post.key.delete()
@@ -165,10 +166,10 @@ class PostAllScheduledPosts(webapp2.RequestHandler):
         
 
 application = webapp2.WSGIApplication([
-    ('/', MainHandler),
-    ('/list/(.*)',ListPostHandler),
-    ('/edit/(.*)',EditPostHandler),
-    ('/delete/(.*)',DeleteHandler),
-    ('/post-now',PostToFBHandler),
+    ('/', MainPage),
+    ('/list/(.*)',PostList),
+    ('/edit/(.*)',EditPost),
+    ('/delete/(.*)',DeletePost),
+    ('/post-now',PostToFB),
     ('/task/post',PostAllScheduledPosts)
 ], debug=True)
